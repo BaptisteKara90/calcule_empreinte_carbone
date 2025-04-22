@@ -34,7 +34,7 @@ export class CarbonFootprintComponent {
     return (this.voyages.reduce((acc, voyages)=> acc + voyages.consommationPour100Km,0))/this.voyages.length;
   }
 
-  get color(): string | undefined {
+  get color(): string {
     if (this.consommationPour100Km > 7) {
       return 'red';
     } else if (this.consommationPour100Km < 4) {
