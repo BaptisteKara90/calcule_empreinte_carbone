@@ -3,11 +3,12 @@
 <p [ngStyle]="{'color': color}">La moyenne de consommation pour 100 km est de {{consommationPour100Km | number:'1.0-2'}}L</p>
 <p [ngClass] = "distanceClass">Le nombre total de kilomètre parcouru de tout les voyages ({{voyages.length}}) est de {{distanceKm}} Km</p>
 <!-- <button (click)="add100km()">+100KM</button> -->
-<p>ce qui donne une consommation total de  {{ resultCons() }}L</p>
+<p>ce qui donne une consommation total de  {{ resultCons | number:'1.0-2' }}L</p>
+<p>Le nombre total de CO2 émis est de {{quantiteCO2 | number:'1.0-2'}}g</p>
 <div>
-    @if(resultCons() > 7 ){
+    @if(resultCons > 7 ){
         <p>Attention, votre consommation est élevé</p>
-    }@else if (resultCons() < 4 ) {
+    }@else if (resultCons < 4 ) {
         <p>Félicitation, votre consommation est faible</p>
     }
 </div>
@@ -18,12 +19,14 @@
         <tr>
             <th>Distance</th>
             <th>Consommation pour 100 kms</th>
+            <th>CO2 émis</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let voyage of voyages">
             <td>{{ voyage.distanceKm }} km</td>
             <td>{{ voyage.consommationPour100Km }} L</td>
+            <td>{{ voyage.quantiteCO2 | number:'1.0-2' }}g</td>
         </tr>
     </tbody>
 </table>
