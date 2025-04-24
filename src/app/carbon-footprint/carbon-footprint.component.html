@@ -20,6 +20,8 @@
             <th>Distance</th>
             <th>Consommation pour 100 kms</th>
             <th>CO2 émis</th>
+            <th>Date</th>
+            <th>Type de transport</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +29,8 @@
             <td>{{ voyage.distanceKm }} km</td>
             <td>{{ voyage.consommationPour100Km }} L</td>
             <td>{{ voyage.quantiteCO2 | number:'1.0-2' }}g</td>
+            <td>{{ voyage.date | date:'dd/MM/yyyy' }}</td>
+            <td>{{ voyage.vehicule }}</td>
         </tr>
     </tbody>
 </table>

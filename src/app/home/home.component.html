@@ -1,3 +1,22 @@
 <h1>Bienvenue sur votre site de calcul d'empreinte carbone!</h1>
 
-<button (click)="navigateToSummary()">Suivant</button>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+    <label for="username">Pseudo :</label>
+    <input type="text" id="username" formControlName="username" name="username" required>
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" formControlName="password" name="password" required>
+    @if(form.get('username')?.touched && form.get('username')?.hasError('required')) {
+        <p class="error">Le pseudo est obligatoire</p>
+    } @else if (form.get('username')?.touched && form.get('username')?.hasError('minlength')) {
+        <p class="error">Le pseudo doit faire au moins 3 caractères !</p>
+    }
+    @if(form.get('password')?.touched && form.get('password')?.hasError('required')) {
+        <p class="error">Le mot de passe est obligatoire</p>
+    } @else if (form.get('password')?.touched && form.get('password')?.hasError('minlength')) {
+        <p class="error">Le mot de passe doit faire au moins 4 caractères !</p>
+    }
+</div>
+    <input type="submit" value="Se connecter">
+</form>
+

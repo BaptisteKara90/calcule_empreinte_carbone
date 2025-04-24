@@ -1,1 +1,43 @@
-<p>carbon-footprint-form works!</p>
+<h2>Ajouter un nouveau voyage</h2>
+
+<form [formGroup]="formNewVoyage" (ngSubmit)="onSubmit()">
+    <div>
+        <div>
+            <label for="distance">Distance : </label>
+            <input type="number" id="distance" formControlName="distance" name="distance" required>
+            @if(formNewVoyage.get('distance')?.touched && formNewVoyage.get('distance')?.hasError('required')) {
+                <p class="error">La distance est obligatoire</p>
+            } @else if (formNewVoyage.get('distance')?.touched && formNewVoyage.get('distance')?.hasError('min')) {
+                <p class="error">La distance doit être supérieur à 0</p>
+            }
+        </div>
+        <div>
+            <label for="ConsoPour100Km">Consommation pour 100KM : </label>
+            <input type="number" id="consoPour100Km" formControlName="consoPour100Km" name="ConsoPour100Km" required>
+            @if(formNewVoyage.get('consoPour100Km')?.touched && formNewVoyage.get('consoPour100Km')?.hasError('required')) {
+                <p class="error">La consommation est obligatoire</p>
+            } @else if (formNewVoyage.get('consoPour100Km')?.touched && formNewVoyage.get('consoPour100Km')?.hasError('min')) {
+                <p class="error">La consommation doit être supérieur à 0</p>
+            }
+        </div>
+        <div>
+            <label for="date">Date de départ : </label>
+            <input type="date" id="date" formControlName="date" name="date" required>
+            @if(formNewVoyage.get('date')?.touched && formNewVoyage.get('date')?.hasError('required')) {
+                <p class="error">La date est obligatoire</p>
+            }
+        </div>
+        <div>
+            <label for="vehicule">Type de transport : </label>
+            <select id="vehicule" formControlName="vehicule" name="vehicule" required>
+                <option value="voiture">Voiture</option>
+                <option value="train">Train</option>
+                <option value="avion">Avion</option>
+            </select>
+            @if(formNewVoyage.get('vehicule')?.touched && formNewVoyage.get('vehicule')?.hasError('required')) {
+                <p class="error">Le type de transport est obligatoire</p>
+            }
+        </div>
+    </div>
+    <input type="submit" value="Ajouter le voyage" [disabled]="!formNewVoyage.valid">
+</form>
