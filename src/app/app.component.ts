@@ -7,10 +7,7 @@ import { CarbonFootprintComponent } from './carbon-footprint/carbon-footprint.co
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet,
-    HeaderComponent,
-    FooterComponent,
-    CarbonFootprintComponent
+    RouterOutlet
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
